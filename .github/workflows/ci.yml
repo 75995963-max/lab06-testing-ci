@@ -24,8 +24,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install pytest pytest-cov ruff requests
 
-    - name: Verificar calidad de codigo con Ruff
-      run: python -m ruff check .
+    - name: Formatear y verificar calidad de codigo con Ruff
+      run: |
+        ruff check --fix .
+        ruff check .
 
     - name: Ejecutar pruebas unitarias con Pytest
       run: python -m pytest --cov=. -v
